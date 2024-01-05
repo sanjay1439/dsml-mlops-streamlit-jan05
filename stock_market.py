@@ -34,22 +34,6 @@ st.dataframe(hist)
 # st.write("This plot is for Price of the stock")
 # st.line_chart(hist.Close)
 
-
-# col1, col2, col3 = st.columns(3)
-
-# with col1:
-#    st.header("A cat")
-#    st.image("https://static.streamlit.io/examples/cat.jpg")
-
-# with col2:
-#    st.header("A dog")
-#    st.image("https://static.streamlit.io/examples/dog.jpg")
-
-# with col3:
-#    st.header("An owl")
-#    st.image("https://static.streamlit.io/examples/owl.jpg")
-
-
 col1, col2 = st.columns(2)
 
 with col1:
@@ -59,3 +43,39 @@ with col1:
 with col2:
     st.write("This plot is for Price of the stock")
     st.line_chart(hist.Close)
+
+    # python filename.py
+    # streamlit run filename.py
+
+    # save a model naled lr using pickle
+
+    # import pickle
+
+    # with open("lr.pkl", "wb") as f:
+    #     pickle.dump(lr, f)
+
+
+    # read lr.pkl back into memory
+
+    # with open("lr.pkl", "rb") as f:
+    #     lr = pickle.load(f)
+
+
+
+    from xgboost import XGBClassifier
+
+    xgb = XGBClassifier()
+
+    xgb.fit(X_train, y_train) # if it's a huge file, it will sit in my ram, and eat space. 
+
+
+    # how to save xgb in my hard-drive, I can do this using pickle
+    # with open("xgb.pkl", "wb") as f:
+    #     pickle.dump(xgb, f)
+
+
+    with open("xgb.pkl", "rb") as f:
+        xgb = pickle.load(f)
+        
+
+    xgb.predict(prediction_data)
